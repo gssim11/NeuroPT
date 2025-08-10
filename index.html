@@ -332,6 +332,19 @@
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
         }
+        
+        /* --- Notification Styles --- */
+        #notification {
+            position: fixed;
+            top: 1.25rem;
+            right: 1.25rem;
+            z-index: 9999;
+            transition: transform 0.5s ease-in-out;
+            transform: translateX(120%);
+        }
+        #notification.show {
+            transform: translateX(0);
+        }
     </style>
 </head>
 <body class="p-4 md:p-8">
@@ -341,10 +354,9 @@
         <p class="text-lg text-gray-600 mt-4">심경섭 교수: 신경계물리치료중재학, 신경계운동치료학</p>
     </header>
 
-    <!-- API Key Notice -->
-    <div class="container mx-auto p-4 mb-8 bg-yellow-100 border-l-4 border-yellow-500 text-yellow-700 rounded-lg">
-        <p class="font-bold">AI 기능 안내</p>
-        <p>이 페이지의 AI 기능(요약, 퀴즈, 사례 연구, 운동처방)은 Gemini API를 사용합니다. 웹페이지로 게시하여 사용하실 경우, 원활한 작동을 위해 스크립트 내에 본인의 Gemini API 키를 직접 입력해야 합니다.</p>
+    <!-- Custom Alert/Notification -->
+    <div id="notification" class="fixed top-5 right-5 bg-green-500 text-white py-2 px-4 rounded-lg shadow-lg">
+        <p id="notification-message"></p>
     </div>
 
     <!-- Search Bar -->
@@ -438,9 +450,7 @@
                 </ul>
             </div>
             <div class="gemini-buttons">
-                <button class="gemini-btn" data-action="tts">✨ AI 음성으로 듣기</button>
-                <button class="gemini-btn" data-action="quiz">✨ AI 요약 및 퀴즈</button>
-                <button class="gemini-btn" data-action="case">✨ AI 사례 연구</button>
+                <button class="gemini-btn" data-action="generate-plan">AI 환자 맞춤형 운동치료 프로그램 생성</button>
             </div>
         </section>
         
@@ -486,9 +496,7 @@
                 </ul>
             </div>
             <div class="gemini-buttons">
-                <button class="gemini-btn" data-action="tts">✨ AI 음성으로 듣기</button>
-                <button class="gemini-btn" data-action="quiz">✨ AI 요약 및 퀴즈</button>
-                <button class="gemini-btn" data-action="case">✨ AI 사례 연구</button>
+                <button class="gemini-btn" data-action="generate-plan">AI 환자 맞춤형 운동치료 프로그램 생성</button>
             </div>
         </section>
         
@@ -535,9 +543,7 @@
                 </ul>
             </div>
             <div class="gemini-buttons">
-                <button class="gemini-btn" data-action="tts">✨ AI 음성으로 듣기</button>
-                <button class="gemini-btn" data-action="quiz">✨ AI 요약 및 퀴즈</button>
-                <button class="gemini-btn" data-action="case">✨ AI 사례 연구</button>
+                <button class="gemini-btn" data-action="generate-plan">AI 환자 맞춤형 운동치료 프로그램 생성</button>
             </div>
         </section>
 
@@ -575,9 +581,7 @@
                 </ul>
             </div>
             <div class="gemini-buttons">
-                <button class="gemini-btn" data-action="tts">✨ AI 음성으로 듣기</button>
-                <button class="gemini-btn" data-action="quiz">✨ AI 요약 및 퀴즈</button>
-                <button class="gemini-btn" data-action="case">✨ AI 사례 연구</button>
+                <button class="gemini-btn" data-action="generate-plan">AI 환자 맞춤형 운동치료 프로그램 생성</button>
             </div>
         </section>
 
@@ -617,9 +621,7 @@
                 </ul>
             </div>
             <div class="gemini-buttons">
-                <button class="gemini-btn" data-action="tts">✨ AI 음성으로 듣기</button>
-                <button class="gemini-btn" data-action="quiz">✨ AI 요약 및 퀴즈</button>
-                <button class="gemini-btn" data-action="case">✨ AI 사례 연구</button>
+                <button class="gemini-btn" data-action="generate-plan">AI 환자 맞춤형 운동치료 프로그램 생성</button>
             </div>
         </section>
 
@@ -657,9 +659,7 @@
                 </ul>
             </div>
             <div class="gemini-buttons">
-                <button class="gemini-btn" data-action="tts">✨ AI 음성으로 듣기</button>
-                <button class="gemini-btn" data-action="quiz">✨ AI 요약 및 퀴즈</button>
-                <button class="gemini-btn" data-action="case">✨ AI 사례 연구</button>
+                <button class="gemini-btn" data-action="generate-plan">AI 환자 맞춤형 운동치료 프로그램 생성</button>
             </div>
         </section>
 
@@ -699,9 +699,7 @@
                 </ul>
             </div>
             <div class="gemini-buttons">
-                <button class="gemini-btn" data-action="tts">✨ AI 음성으로 듣기</button>
-                <button class="gemini-btn" data-action="quiz">✨ AI 요약 및 퀴즈</button>
-                <button class="gemini-btn" data-action="case">✨ AI 사례 연구</button>
+                <button class="gemini-btn" data-action="generate-plan">AI 환자 맞춤형 운동치료 프로그램 생성</button>
             </div>
         </section>
 
@@ -744,9 +742,7 @@
                 </ul>
             </div>
             <div class="gemini-buttons">
-                <button class="gemini-btn" data-action="tts">✨ AI 음성으로 듣기</button>
-                <button class="gemini-btn" data-action="quiz">✨ AI 요약 및 퀴즈</button>
-                <button class="gemini-btn" data-action="case">✨ AI 사례 연구</button>
+                <button class="gemini-btn" data-action="generate-plan">AI 환자 맞춤형 운동치료 프로그램 생성</button>
             </div>
         </section>
 
@@ -780,9 +776,7 @@
                 </ul>
             </div>
             <div class="gemini-buttons">
-                <button class="gemini-btn" data-action="tts">✨ AI 음성으로 듣기</button>
-                <button class="gemini-btn" data-action="quiz">✨ AI 요약 및 퀴즈</button>
-                <button class="gemini-btn" data-action="case">✨ AI 사례 연구</button>
+                <button class="gemini-btn" data-action="generate-plan">AI 환자 맞춤형 운동치료 프로그램 생성</button>
             </div>
         </section>
 
@@ -819,9 +813,7 @@
                 </ul>
             </div>
             <div class="gemini-buttons">
-                <button class="gemini-btn" data-action="tts">✨ AI 음성으로 듣기</button>
-                <button class="gemini-btn" data-action="quiz">✨ AI 요약 및 퀴즈</button>
-                <button class="gemini-btn" data-action="case">✨ AI 사례 연구</button>
+                <button class="gemini-btn" data-action="generate-plan">AI 환자 맞춤형 운동치료 프로그램 생성</button>
             </div>
         </section>
 
@@ -852,9 +844,7 @@
                 </ul>
             </div>
             <div class="gemini-buttons">
-                <button class="gemini-btn" data-action="tts">✨ AI 음성으로 듣기</button>
-                <button class="gemini-btn" data-action="quiz">✨ AI 요약 및 퀴즈</button>
-                <button class="gemini-btn" data-action="case">✨ AI 사례 연구</button>
+                <button class="gemini-btn" data-action="generate-plan">AI 환자 맞춤형 운동치료 프로그램 생성</button>
             </div>
         </section>
 
@@ -884,9 +874,7 @@
                 </ul>
             </div>
             <div class="gemini-buttons">
-                <button class="gemini-btn" data-action="tts">✨ AI 음성으로 듣기</button>
-                <button class="gemini-btn" data-action="quiz">✨ AI 요약 및 퀴즈</button>
-                <button class="gemini-btn" data-action="case">✨ AI 사례 연구</button>
+                <button class="gemini-btn" data-action="generate-plan">AI 환자 맞춤형 운동치료 프로그램 생성</button>
             </div>
         </section>
 
@@ -923,9 +911,7 @@
                 </ul>
             </div>
             <div class="gemini-buttons">
-                <button class="gemini-btn" data-action="tts">✨ AI 음성으로 듣기</button>
-                <button class="gemini-btn" data-action="quiz">✨ AI 요약 및 퀴즈</button>
-                <button class="gemini-btn" data-action="case">✨ AI 사례 연구</button>
+                <button class="gemini-btn" data-action="generate-plan">AI 환자 맞춤형 운동치료 프로그램 생성</button>
             </div>
         </section>
 
@@ -965,9 +951,7 @@
                 </ul>
             </div>
             <div class="gemini-buttons">
-                <button class="gemini-btn" data-action="tts">✨ AI 음성으로 듣기</button>
-                <button class="gemini-btn" data-action="quiz">✨ AI 요약 및 퀴즈</button>
-                <button class="gemini-btn" data-action="case">✨ AI 사례 연구</button>
+                <button class="gemini-btn" data-action="generate-plan">AI 환자 맞춤형 운동치료 프로그램 생성</button>
             </div>
         </section>
 
@@ -1003,9 +987,7 @@
                 </ul>
             </div>
             <div class="gemini-buttons">
-                <button class="gemini-btn" data-action="tts">✨ AI 음성으로 듣기</button>
-                <button class="gemini-btn" data-action="quiz">✨ AI 요약 및 퀴즈</button>
-                <button class="gemini-btn" data-action="case">✨ AI 사례 연구</button>
+                <button class="gemini-btn" data-action="generate-plan">AI 환자 맞춤형 운동치료 프로그램 생성</button>
             </div>
         </section>
 
@@ -1043,9 +1025,7 @@
                 </ul>
             </div>
             <div class="gemini-buttons">
-                <button class="gemini-btn" data-action="tts">✨ AI 음성으로 듣기</button>
-                <button class="gemini-btn" data-action="quiz">✨ AI 요약 및 퀴즈</button>
-                <button class="gemini-btn" data-action="case">✨ AI 사례 연구</button>
+                <button class="gemini-btn" data-action="generate-plan">AI 환자 맞춤형 운동치료 프로그램 생성</button>
             </div>
         </section>
 
@@ -1082,9 +1062,7 @@
                 </ul>
             </div>
             <div class="gemini-buttons">
-                <button class="gemini-btn" data-action="tts">✨ AI 음성으로 듣기</button>
-                <button class="gemini-btn" data-action="quiz">✨ AI 요약 및 퀴즈</button>
-                <button class="gemini-btn" data-action="case">✨ AI 사례 연구</button>
+                <button class="gemini-btn" data-action="generate-plan">AI 환자 맞춤형 운동치료 프로그램 생성</button>
             </div>
         </section>
 
@@ -1122,9 +1100,7 @@
                 </ul>
             </div>
             <div class="gemini-buttons">
-                <button class="gemini-btn" data-action="tts">✨ AI 음성으로 듣기</button>
-                <button class="gemini-btn" data-action="quiz">✨ AI 요약 및 퀴즈</button>
-                <button class="gemini-btn" data-action="case">✨ AI 사례 연구</button>
+                <button class="gemini-btn" data-action="generate-plan">AI 환자 맞춤형 운동치료 프로그램 생성</button>
             </div>
         </section>
 
@@ -1160,9 +1136,7 @@
                 </ul>
             </div>
             <div class="gemini-buttons">
-                <button class="gemini-btn" data-action="tts">✨ AI 음성으로 듣기</button>
-                <button class="gemini-btn" data-action="quiz">✨ AI 요약 및 퀴즈</button>
-                <button class="gemini-btn" data-action="case">✨ AI 사례 연구</button>
+                <button class="gemini-btn" data-action="generate-plan">AI 환자 맞춤형 운동치료 프로그램 생성</button>
             </div>
         </section>
 
@@ -1200,9 +1174,7 @@
                 </ul>
             </div>
             <div class="gemini-buttons">
-                <button class="gemini-btn" data-action="tts">✨ AI 음성으로 듣기</button>
-                <button class="gemini-btn" data-action="quiz">✨ AI 요약 및 퀴즈</button>
-                <button class="gemini-btn" data-action="case">✨ AI 사례 연구</button>
+                <button class="gemini-btn" data-action="generate-plan">AI 환자 맞춤형 운동치료 프로그램 생성</button>
             </div>
         </section>
         
@@ -1210,6 +1182,23 @@
         <section id="ai-support" class="infographic-section">
             <h2 class="section-title">AI 환자 맞춤형 운동치료 프로그램 생성</h2>
             <p class="mb-4 text-gray-600">아래 입력란에 환자의 주요 정보, 진단명, 평가 소견 등을 입력하고 버튼을 누르면, AI가 맞춤형 운동치료 프로그램을 생성해 드립니다. (예: 65세 남성, 좌측 MCA 뇌경색 발병 3개월, 브룬스트롬 3단계, 경직 약간 있음, 독립적 앉기 가능)</p>
+            
+            <!-- API Key Setup Section (Moved Here) -->
+            <div class="p-6 mb-8 bg-indigo-50 border-l-4 border-indigo-500 text-indigo-800 rounded-lg shadow-md">
+                <div class="flex items-center mb-2">
+                    <i class="fas fa-key text-indigo-600 text-xl mr-3"></i>
+                    <h3 class="font-bold text-lg">AI 기능 API 키 설정</h3>
+                </div>
+                <p class="text-sm text-indigo-700 mb-4">모든 AI 기능을 사용하려면 Google AI Studio에서 발급받은 Gemini API 키가 필요합니다. 키는 브라우저에 안전하게 저장되며 외부로 전송되지 않습니다.</p>
+                <div class="flex flex-col sm:flex-row items-center gap-2">
+                    <input type="password" id="apiKeyInput" class="flex-grow w-full sm:w-auto border border-slate-300 rounded-md shadow-sm py-2 px-3 focus:ring-indigo-500 focus:border-indigo-500" placeholder="여기에 API 키를 붙여넣으세요">
+                    <button id="saveApiKeyBtn" class="w-full sm:w-auto bg-indigo-600 text-white font-bold py-2 px-4 rounded-lg hover:bg-indigo-700 transition-colors shadow hover:shadow-lg">
+                        <i class="fas fa-save mr-2"></i>키 저장
+                    </button>
+                </div>
+                <a href="https://aistudio.google.com/app/apikey" target="_blank" class="text-xs text-indigo-600 hover:underline mt-2 inline-block">Google AI Studio에서 API 키 받기 &rarr;</a>
+            </div>
+
             <div id="aiToolContainer">
                 <textarea id="patientInfoInput" placeholder="환자 정보 입력..."></textarea>
                 <button id="generatePlanBtn" class="gemini-btn w-full md:w-auto">
@@ -1244,10 +1233,39 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            // --- IMPORTANT: API KEY SETUP ---
-            // For the AI features to work, you need to get your own Gemini API key 
-            // from Google AI Studio and paste it between the quotes below.
-            const USER_API_KEY = ""; // <<< 여기에 당신의 Gemini API 키를 입력하세요.
+            // --- API Key Management ---
+            const apiKeyInput = document.getElementById('apiKeyInput');
+            const saveApiKeyBtn = document.getElementById('saveApiKeyBtn');
+            const notification = document.getElementById('notification');
+            const notificationMessage = document.getElementById('notification-message');
+            let userApiKey = localStorage.getItem('geminiUserApiKey');
+
+            if (userApiKey) {
+                apiKeyInput.value = userApiKey;
+            }
+
+            function showNotification(message, isError = false) {
+                notificationMessage.textContent = message;
+                notification.classList.toggle('bg-green-500', !isError);
+                notification.classList.toggle('bg-red-500', isError);
+                notification.classList.add('show');
+                setTimeout(() => {
+                    notification.classList.remove('show');
+                }, 3000);
+            }
+
+            saveApiKeyBtn.addEventListener('click', () => {
+                const key = apiKeyInput.value.trim();
+                if (key) {
+                    localStorage.setItem('geminiUserApiKey', key);
+                    userApiKey = key;
+                    showNotification('API 키가 성공적으로 저장되었습니다.');
+                } else {
+                    localStorage.removeItem('geminiUserApiKey');
+                    userApiKey = null;
+                    showNotification('API 키가 제거되었습니다.', true);
+                }
+            });
 
             const sections = document.querySelectorAll('.infographic-section');
             const navLinks = document.querySelectorAll('nav a');
@@ -1347,16 +1365,17 @@
                 if(buttonToDisable) buttonToDisable.disabled = true;
                 openModal();
                 
-                if (!USER_API_KEY) {
+                if (!userApiKey) {
                     modalTitle.textContent = 'API 키 필요';
-                    modalContent.innerHTML = '<p>AI 기능을 사용하려면 유효한 Gemini API 키가 필요합니다. 이 HTML 파일의 script 태그 상단에 있는 <strong>USER_API_KEY</strong> 변수에 자신의 API 키를 입력해주세요.</p><p><a href="https://aistudio.google.com/app/apikey" target="_blank" class="text-blue-600 hover:underline">여기에서 API 키를 발급받을 수 있습니다.</a></p><p class="mt-4 text-sm text-red-600"><strong>주의:</strong> GitHub Pages 등 공개된 곳에 API 키를 포함한 코드를 게시하면 키가 노출되어 요금이 발생할 수 있으니, 개인적인 학습 용도로만 사용하세요.</p>';
+                    modalContent.innerHTML = `<p>AI 기능을 사용하려면 페이지 상단의 'AI 기능 API 키 설정' 섹션에 유효한 Gemini API 키를 입력하고 저장해야 합니다.</p><p><a href="https://aistudio.google.com/app/apikey" target="_blank" class="text-blue-600 hover:underline">여기에서 API 키를 발급받을 수 있습니다.</a></p>`;
                     modalLoader.classList.add('hidden');
                     if(buttonToDisable) buttonToDisable.disabled = false;
+                    document.getElementById('ai-support').scrollIntoView({ behavior: 'smooth' });
                     return;
                 }
 
                 try {
-                    const response = await fetch(`${apiUrl}?key=${USER_API_KEY}`, {
+                    const response = await fetch(`${apiUrl}?key=${userApiKey}`, {
                         method: 'POST',
                         headers: { 'Content-Type': 'application/json' },
                         body: JSON.stringify(payload)
@@ -1390,129 +1409,30 @@
                 }
             }
             
-            // --- TTS Helper Functions ---
-            function base64ToArrayBuffer(base64) {
-                const binaryString = window.atob(base64);
-                const len = binaryString.length;
-                const bytes = new Uint8Array(len);
-                for (let i = 0; i < len; i++) {
-                    bytes[i] = binaryString.charCodeAt(i);
-                }
-                return bytes.buffer;
-            }
-
-            function pcmToWav(pcmData, sampleRate) {
-                const numChannels = 1;
-                const bitsPerSample = 16;
-                const blockAlign = (numChannels * bitsPerSample) / 8;
-                const byteRate = sampleRate * blockAlign;
-                const dataSize = pcmData.length * 2;
-                const buffer = new ArrayBuffer(44 + dataSize);
-                const view = new DataView(buffer);
-
-                function writeString(view, offset, string) {
-                    for (let i = 0; i < string.length; i++) {
-                        view.setUint8(offset + i, string.charCodeAt(i));
-                    }
-                }
-
-                writeString(view, 0, 'RIFF');
-                view.setUint32(4, 36 + dataSize, true);
-                writeString(view, 8, 'WAVE');
-                writeString(view, 12, 'fmt ');
-                view.setUint32(16, 16, true);
-                view.setUint16(20, 1, true);
-                view.setUint16(22, numChannels, true);
-                view.setUint32(24, sampleRate, true);
-                view.setUint32(28, byteRate, true);
-                view.setUint16(32, blockAlign, true);
-                view.setUint16(34, bitsPerSample, true);
-                writeString(view, 36, 'data');
-                view.setUint32(40, dataSize, true);
-
-                for (let i = 0; i < pcmData.length; i++) {
-                    view.setInt16(44 + i * 2, pcmData[i], true);
-                }
-
-                return new Blob([view], { type: 'audio/wav' });
-            }
-
-
-            // --- TTS API Call ---
-            async function callTtsApi(prompt, buttonToDisable) {
-                const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-tts:generateContent`;
-                const payload = {
-                    contents: [{ parts: [{ text: prompt }] }],
-                    generationConfig: {
-                        responseModalities: ["AUDIO"],
-                        speechConfig: {
-                            voiceConfig: { prebuiltVoiceConfig: { voiceName: "Kore" } }
-                        }
-                    },
-                    model: "gemini-2.5-flash-preview-tts"
-                };
-                
-                const result = await callApi(apiUrl, payload, buttonToDisable);
-
-                if (result) {
-                    const part = result?.candidates?.[0]?.content?.parts?.[0];
-                    const audioData = part?.inlineData?.data;
-                    const mimeType = part?.inlineData?.mimeType;
-
-                    if (audioData && mimeType && mimeType.startsWith("audio/")) {
-                        const sampleRate = parseInt(mimeType.match(/rate=(\d+)/)[1], 10);
-                        const pcmData = base64ToArrayBuffer(audioData);
-                        const pcm16 = new Int16Array(pcmData);
-                        const wavBlob = pcmToWav(pcm16, sampleRate);
-                        const audioUrl = URL.createObjectURL(wavBlob);
-                        
-                        const audio = new Audio(audioUrl);
-                        audio.controls = true;
-                        audio.autoplay = true;
-                        audio.classList.add('w-full', 'mt-4');
-                        modalContent.appendChild(audio);
-                    } else {
-                        modalContent.textContent = '음성 데이터 수신에 실패했습니다.';
-                    }
-                }
-            }
-
-
             // --- Event Listeners for Buttons ---
-            document.querySelectorAll('.gemini-btn[data-action]').forEach(button => {
+            // This listener handles the "Generate Plan" buttons within each disease section
+            document.querySelectorAll('button[data-action="generate-plan"]').forEach(button => {
                 button.addEventListener('click', (e) => {
                     const section = e.target.closest('.infographic-section');
                     const diseaseName = section.querySelector('.section-title').textContent.trim();
-                    const action = e.target.dataset.action;
-                    let prompt = '';
+                    const aiSupportSection = document.getElementById('ai-support');
+                    
+                    // Pre-fill the textarea with a template, making it easier for the user.
+                    patientInfoInput.value = `전형적인 ${diseaseName} 환자를 위한 맞춤형 운동 프로그램을 생성해주세요. (여기에 환자의 나이, 성별, 발병 기간, 주요 증상, 기능 수준 등 구체적인 정보를 추가하면 더 정확한 결과를 얻을 수 있습니다.)`;
 
-                    if (action === 'tts') {
-                        modalTitle.textContent = `${diseaseName} - AI 음성 듣기`;
-                        const title1 = section.querySelector('[data-tts-title="정의 및 종류"], [data-tts-title="정의 및 병태생리"], [data-tts-title="정의 및 원인"], [data-tts-title="정의"]')?.textContent || '정의';
-                        const content1 = section.querySelector('[data-tts-title="정의 및 종류"] + p, [data-tts-title="정의 및 병태생리"] + p, [data-tts-title="정의 및 원인"] + p, [data-tts-title="정의"] + p')?.textContent || '';
-                        
-                        const title2 = section.querySelector('[data-tts-title="물리치료 핵심 목표"]')?.textContent || '물리치료 목표';
-                        const content2 = section.querySelector('[data-tts-title="물리치료 핵심 목표"] + p')?.textContent || '';
-                        
-                        prompt = `명확하고 전문적인 톤으로 다음 내용을 읽어주세요: ${diseaseName}. ${title1}. ${content1}. ${title2}. ${content2}.`;
-                        callTtsApi(prompt, e.target);
-                    } else if (action === 'quiz') {
-                        modalTitle.textContent = `${diseaseName} - AI 요약 및 퀴즈`;
-                        const sectionText = section.textContent.replace(/✨ AI 음성으로 듣기|✨ AI 요약 및 퀴즈|✨ AI 사례 연구/g, '').trim();
-                        prompt = `다음 텍스트는 '${diseaseName}'에 대한 내용이야. 이 내용을 바탕으로 아래 형식에 맞춰 답변해줘:\n\n### AI 요약\n(핵심 내용 3줄 요약)\n\n### AI 퀴즈\n**객관식:** (물리치료사 국가고시 스타일의 객관식 문제 1개와 보기 4개, 정답 포함)\n\n**주관식:** (핵심 내용을 묻는 주관식 문제 1개와 정답 포함)`;
-                        callTextApi(prompt, e.target);
-                    } else if (action === 'case') {
-                        modalTitle.textContent = `${diseaseName} - AI 임상 사례 연구`;
-                        prompt = `'${diseaseName}' 환자에 대한 간단한 임상 사례 연구를 다음 형식으로 작성해줘:\n\n### AI 임상 사례 연구: ${diseaseName}\n\n**환자 정보:** (나이/성별)\n\n**주요 호소 (Chief Complaint):** (환자가 호소하는 주된 문제)\n\n**초기 평가 소견:** (물리치료사가 발견할 수 있는 객관적인 징후들)`;
-                        callTextApi(prompt, e.target);
-                    }
+                    // Smoothly scroll to the AI tool section with an offset
+                    const offsetPosition = aiSupportSection.getBoundingClientRect().top + window.pageYOffset - 20;
+                    window.scrollTo({ top: offsetPosition, behavior: "smooth" });
+
+                    // Focus the textarea for immediate user input
+                    patientInfoInput.focus();
                 });
             });
 
             generatePlanBtn.addEventListener('click', (e) => {
                 const patientInfo = patientInfoInput.value.trim();
                 if (!patientInfo) {
-                    alert('환자 정보를 입력해주세요.');
+                    showNotification('환자 정보를 입력해주세요.', true);
                     return;
                 }
                 modalTitle.textContent = 'AI 맞춤형 운동치료 프로그램';
