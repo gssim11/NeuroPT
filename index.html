@@ -345,6 +345,13 @@
         #notification.show {
             transform: translateX(0);
         }
+        .guide-image {
+            max-width: 100%;
+            border-radius: 0.5rem;
+            border: 1px solid #e2e8f0;
+            margin-top: 0.5rem;
+            margin-bottom: 1rem;
+        }
     </style>
 </head>
 <body class="p-4 md:p-8">
@@ -1181,7 +1188,6 @@
         <!-- AI Clinical Support Tool Section -->
         <section id="ai-support" class="infographic-section">
             <h2 class="section-title">AI 환자 맞춤형 운동치료 프로그램 생성</h2>
-            <p class="mb-4 text-gray-600">아래 입력란에 환자의 주요 정보, 진단명, 평가 소견 등을 입력하고 버튼을 누르면, AI가 맞춤형 운동치료 프로그램을 생성해 드립니다. (예: 65세 남성, 좌측 MCA 뇌경색 발병 3개월, 브룬스트롬 3단계, 경직 약간 있음, 독립적 앉기 가능)</p>
             
             <!-- API Key Setup Section (Moved Here) -->
             <div class="p-6 mb-8 bg-indigo-50 border-l-4 border-indigo-500 text-indigo-800 rounded-lg shadow-md">
@@ -1197,7 +1203,24 @@
                     </button>
                 </div>
                 <a href="https://aistudio.google.com/app/apikey" target="_blank" class="text-xs text-indigo-600 hover:underline mt-2 inline-block">Google AI Studio에서 API 키 받기 &rarr;</a>
+                
+                <!-- New Guide Section -->
+                <details class="mt-4 text-sm">
+                    <summary class="cursor-pointer font-semibold text-indigo-700 hover:text-indigo-900">자세한 API 키 발급 방법 보기</summary>
+                    <div class="mt-2 p-4 bg-white rounded-lg border border-indigo-200">
+                        <p class="mb-2"><strong>1단계:</strong> 위의 'Google AI Studio에서 API 키 받기' 링크를 클릭하여 사이트로 이동 후, '+ API 키 만들기' 버튼을 누릅니다.</p>
+                        <p class="mb-2"><strong>2단계:</strong> 'Gemini API' 프로젝트를 선택합니다.</p>
+                        <p class="mb-2"><strong>3단계:</strong> 생성된 API 키 옆의 '복사' 아이콘을 클릭합니다.</p>
+                        <p class="mb-2"><strong>4단계:</strong> 복사한 키를 위 입력란에 붙여넣고 '키 저장' 버튼을 누르면 설정이 완료됩니다.</p>
+                        <p class="mt-4">
+                            <i class="fab fa-youtube text-red-600 mr-2"></i>
+                            <a href="https://www.youtube.com/watch?v=RVGbLSVFtIk" target="_blank" class="text-blue-600 hover:underline font-semibold">영상으로 자세히 보기: Gemini API 키 발급 방법</a>
+                        </p>
+                    </div>
+                </details>
             </div>
+
+            <p class="mb-4 text-gray-600">아래 입력란에 환자의 주요 정보, 진단명, 평가 소견 등을 입력하고 버튼을 누르면, AI가 맞춤형 운동치료 프로그램을 생성해 드립니다. (예: 65세 남성, 좌측 MCA 뇌경색 발병 3개월, 브룬스트롬 3단계, 경직 약간 있음, 독립적 앉기 가능)</p>
 
             <div id="aiToolContainer">
                 <textarea id="patientInfoInput" placeholder="환자 정보 입력..."></textarea>
@@ -1367,7 +1390,7 @@
                 
                 if (!userApiKey) {
                     modalTitle.textContent = 'API 키 필요';
-                    modalContent.innerHTML = `<p>AI 기능을 사용하려면 페이지 상단의 'AI 기능 API 키 설정' 섹션에 유효한 Gemini API 키를 입력하고 저장해야 합니다.</p><p><a href="https://aistudio.google.com/app/apikey" target="_blank" class="text-blue-600 hover:underline">여기에서 API 키를 발급받을 수 있습니다.</a></p>`;
+                    modalContent.innerHTML = `<p>AI 기능을 사용하려면 페이지의 'AI 기능 API 키 설정' 섹션에 유효한 Gemini API 키를 입력하고 저장해야 합니다.</p><p><a href="https://aistudio.google.com/app/apikey" target="_blank" class="text-blue-600 hover:underline">여기에서 API 키를 발급받을 수 있습니다.</a></p>`;
                     modalLoader.classList.add('hidden');
                     if(buttonToDisable) buttonToDisable.disabled = false;
                     document.getElementById('ai-support').scrollIntoView({ behavior: 'smooth' });
